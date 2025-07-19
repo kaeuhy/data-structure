@@ -4,7 +4,6 @@
     "target": "ESNext",
     "module": "ESNext",
     "outDir": "dist",
-    // 모든 strict의 상위 옵션
     "strict": true,
     "moduleDetection": "force"
   },

@@ -36,9 +36,24 @@ export class ArrayList<E> implements ArrayListInterface<E> {
     }
 
     // 원하는 값 있는지 확인
-    indexOf()
+    indexOf(x: E): number {
+        return this.items.findIndex(e => e === x);
+    }
 
     // 배열 값 날리기
 
+
     //
+    size() {
+        return console.log(this.items.length);
+    }
+
+    // 리스트가 비었는지 확인
+    isEmpty(): void {
+        if (this.items.length === 0) {
+            console.log("리스트가 비어있습니다");
+        } else {
+            console.log(this.items);
+        }
+    }
 }
