@@ -37,11 +37,8 @@ export class ArrayList<E> implements ArrayListInterface<E> {
 
     // 원하는 값 있는지 확인
     indexOf(x: E): number {
-        return this.items.findIndex(e => e === x);
+        return Array.prototype.indexOf.call(this.items, x);
     }
-
-    // 배열 값 날리기
-
 
     //
     size() {
