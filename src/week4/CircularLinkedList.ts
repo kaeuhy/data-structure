@@ -28,11 +28,12 @@ export class CircularLinkedList<T> implements ListInterface<T> {
 
         const newNode = new Node(item);
 
+        // 맨 앞 삽입할때
         if (index === 0) {
             if (this.head === null) {
                 this.head = newNode;
                 this.tail = newNode;
-                newNode.next = newNode; // 자기 자신을 가리킴
+                newNode.next = newNode;
             } else {
                 newNode.next = this.head;
                 this.tail!.next = newNode;
@@ -40,11 +41,13 @@ export class CircularLinkedList<T> implements ListInterface<T> {
             }
         } else {
             let prev = this.head!;
+            // 삽입할 위치의 바로 이전 노드를 찾는다
             for (let i = 0; i < index - 1; i++) {
                 prev = prev.next!;
             }
             newNode.next = prev.next;
             prev.next = newNode;
+            // 맨 끝에 추가하는 경우 tail을 새 노드로 업데이트 해야함
             if (prev === this.tail) this.tail = newNode;
         }
 
@@ -52,9 +55,10 @@ export class CircularLinkedList<T> implements ListInterface<T> {
     }
 
     append(item: T): void {
-        this.add(this.length, item); // 끝에 추가는 add(length)와 같음
+        this.add(this.length, item);
     }
 
+    // 특정 값을 가진 노드를 삭제합니다.
     remove(index: number): T {
         if (index < 0 || index >= this.length) {
             throw new Error("Index out of bounds");
@@ -62,6 +66,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
 
         let removedNode: Node<T>;
 
+        // 맨 앞 노드면 head와 tail을 모두 null로 만들어 삭제
         if (index === 0) {
             removedNode = this.head!;
             if (this.length === 1) {
@@ -88,6 +93,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
         return removedNode.item;
     }
 
+    // 특정 값을 가진 노드를 삭제합니다.
     removeItem(item: T): boolean {
         let current = this.head;
         for (let i = 0; i < this.length; i++) {
@@ -100,6 +106,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
         return false;
     }
 
+    // 특정 값을 가진 노드를 삭제합니다.
     get(index: number): T {
         if (index < 0 || index >= this.length) {
             throw new Error("Index out of bounds");
@@ -112,6 +119,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
         return current.item;
     }
 
+    // 특정 인덱스의 노드 데이터를 새로운 item 으로 교체합니다.
     set(index: number, item: T): void {
         if (index < 0 || index >= this.length) {
             throw new Error("Index out of bounds");
@@ -124,6 +132,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
         current.item = item;
     }
 
+    // 특정 값이 있는 리스트에서 처음 나타나는 인덱스를 반환합니다.
     indexOf(item: T): number {
         let current = this.head;
         for (let i = 0; i < this.length; i++) {
@@ -133,7 +142,7 @@ export class CircularLinkedList<T> implements ListInterface<T> {
         return -1;
     }
 
-    size(): number {
+    isSize(): number {
         return this.length;
     }
 

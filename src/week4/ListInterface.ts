@@ -13,7 +13,7 @@ export interface ListInterface<E> {
 
     indexOf(x: E): number;
 
-    size(): number;
+    isSize(): number;
 
     isEmpty(): boolean;
 
