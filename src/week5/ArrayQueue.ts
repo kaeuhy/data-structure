@@ -14,7 +14,7 @@ export default class ArrayQueue<E> implements QueueInterface<E> {
     // 데이터를 추가합니다.
     enqueue(item: E): void {
         if (this.isFull()) {
-            throw new Error("큐의 크기가 가득차서 데이터 추가 못해유");
+            throw new Error("큐의 크기가 가득차서 데이터 추가 못 합니다.");
         }
         this.items[this.items.length] = item;
     }
@@ -28,10 +28,10 @@ export default class ArrayQueue<E> implements QueueInterface<E> {
         const itemToReturn = this.items[0];
 
         for (let i = 0; i < this.items.length - 1; i++) {
-            this.item[i] = this.items[i + 1];
+            this.items[i] = this.items[i + 1];
         }
 
-        this.item.length = this.items.length - 1;
+        this.items.length = this.items.length - 1;
 
         return itemToReturn;
     }
